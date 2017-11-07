@@ -1,0 +1,31 @@
+bool operator < (const class A &a1, const class A &a2)
+{
+    return (a1.get_size() < a2.get_size());
+}
+
+template <typename T>
+struct MyLarge
+{
+    bool operator() (const T &x, const T &y) const 
+    { 
+        string a, b;
+        a = x.get_name();
+        b = y.get_name();
+        return a[0] < b[0];
+    }
+};
+
+template <class Init, class Fun>
+void Show(Init first, Init last, Fun fn)
+{
+    while (first != last) {
+        fn(*first);
+        first++;
+    }
+}
+
+struct Print
+{
+    template <typename T>
+    void operator () (T & i) { cout << i << ' '; }
+};

@@ -1,0 +1,25 @@
+class MyString : public string {
+public:
+    MyString() {};
+    MyString(const char * st) :string(st) {};
+    MyString & operator +(MyString & op2) {
+        string s1 = *this;
+        string s2 = op2;
+        string s = s1 + s2;
+        return *new MyString(s.c_str());
+    }
+    MyString & operator +(const char * cs2) {
+        string str1 = *this;
+        string s = str1 + cs2;
+        return *new MyString(s.c_str());
+    }
+    MyString & operator()(int s, int l) {
+        string str = substr(s, l);
+        return *new MyString(str.c_str());
+    }
+};
+MyString & operator+(const char * op1, MyString & op2) {
+    string st2 = op2;
+    string s = op1 + st2;
+    return *new MyString(s.c_str());
+}

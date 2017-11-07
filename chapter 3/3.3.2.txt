@@ -1,0 +1,1 @@
+Sample(const Sample &c) { v = 10; }

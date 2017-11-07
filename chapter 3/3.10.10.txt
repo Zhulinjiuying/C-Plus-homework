@@ -1,0 +1,22 @@
+class A
+{
+public:
+    static int count;
+    A(int n = 0) { count++; }
+    virtual ~A()
+    { 
+        count--;
+        cout << "A::destructor" << endl;
+    }
+};
+class B :public A
+{
+public:
+    B(const B &b) {
+    }
+    B(int n = 0) :A(n){ }
+    ~B() 
+    { 
+        cout << "B::destructor" << endl;
+    }
+};
